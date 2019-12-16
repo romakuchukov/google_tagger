@@ -1,8 +1,8 @@
 # google_tagger
 
-Clone the repo into your `/modules/custom`
+Clone the repo into your `/modules/custom`.
 
-Install/Enable the module
+Install/Enable the module.
 
 After installing/enabling module visit `/admin/custom/google-tagger/settings` url on your D8.
 
