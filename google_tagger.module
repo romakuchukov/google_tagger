@@ -1,0 +1,46 @@
+<?php
+
+use Drupal\Core\Url;
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * @file
+ * Primary module hooks for Google TAG module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+/**
+ * Implements hook_help().
+ */
+function google_tagger_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.google_tagger':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The Google TAG module injects The Google Tag Manager container snippet and provides ability to add your personal container ID (GTM-XXXX)') . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<p>' . t('After enabling module head over to the <a href=":url">configuration</a> page to add your tag ID.', [':url' => Url::fromRoute('google_tagger.settings')->toString()]) . '</p>';
+
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function google_tagger_theme($existing, $type, $theme, $path) {
+
+  return [
+    'google-tagger-id' => [
+      'template' => 'google-tagger-id-snippet',
+      'variables' => [
+          'google_tagger_id' => '',
+      ],
+    ],
+  ];
+}
+// /admin/custom/google-tagger/settings
+// GTM-N973DM9

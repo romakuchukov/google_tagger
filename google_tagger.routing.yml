@@ -1,0 +1,16 @@
+google_tagger.settings:
+  path: '/admin/custom/google-tagger/settings'
+  defaults:
+    _form: '\Drupal\google_tagger\Form\GoogleTaggerForm'
+    _title: 'Google Container ID'
+    # tag_id: GTM-XXXXXXX
+  requirements:
+    _permission: 'administer site configuration'
+
+google_tagger.all:
+  path: '/all-pages'
+  defaults:
+    _controller: '\Drupal\google_tagger\Controller\GoogleTaggerController::getTaggerId'
+    _title: 'Google Container ID'
+  requirements:
+    _permission: 'access content'
