@@ -42,5 +42,3 @@ function google_tagger_theme($existing, $type, $theme, $path) {
     ],
   ];
 }
-// /admin/custom/google-tagger/settings
-// GTM-N973DM9
