@@ -46,7 +46,7 @@ class GoogleTaggerForm extends ConfigFormBase {
       '#size' => 12,
       '#title' => $this->t('Container ID (@gtm)', ['@gtm' => static::GTM]),
       '#placeholder' => static::GTM,
-      '#description' => $this->t('The Google TAG module injects The Google Tag Manager container snippet and provides ability to add your personal container ID (@gtm)', ['@gtm' => static::GTM]),
+      '#description' => $this->t('Please provide you Google Tag container ID (@gtm) in the field above.', ['@gtm' => static::GTM]),
       '#default_value' => $config->get('tagger-id'),
       '#required' => TRUE,
     ];
@@ -64,7 +64,7 @@ class GoogleTaggerForm extends ConfigFormBase {
     $tagID = trim($form_state->getValue('tagger-id'));
 
     if (!preg_match('/gtm-\w{7}/i', $tagID)) {
-      $form_state->setErrorByName('tagger-id', $this->t('Please check accuracy of your Container TAG ID'));
+      $form_state->setErrorByName('tagger-id', $this->t('Please check accuracy of your Container Tag ID'));
     }
   }
 
@@ -78,7 +78,7 @@ class GoogleTaggerForm extends ConfigFormBase {
       ->set('tagger-id', trim($form_state->getValue('tagger-id')))
       ->save();
 
-    $this->messenger()->addStatus($this->t('Check your Google TAG admin page.'));
+    $this->messenger()->addStatus($this->t('Check your Google Tag administration page to make sure you are connected.'));
     $form_state->setRedirectUrl(Url::fromRoute('google_tagger.settings'));
 
     parent::submitForm($form, $form_state);

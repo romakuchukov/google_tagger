@@ -1,6 +1,6 @@
 google_tagger.admin:
-  title: 'Google TAG'
-  description: Allows injection of Google&#039;s Tag Snippet
+  title: 'Google Tag ID'
+  description: 'Provide Google&#039;s Tag container ID'
   parent: system.admin_config_development
   route_name: google_tagger.settings
   weight: 100

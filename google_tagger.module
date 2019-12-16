@@ -20,9 +20,9 @@ function google_tagger_help($route_name, RouteMatchInterface $route_match) {
     case 'help.page.google_tagger':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('The Google TAG module injects The Google Tag Manager container snippet and provides ability to add your personal container ID (GTM-XXXX)') . '</p>';
+      $output .= '<p>' . t('Google Tag module injects Google Tag Manager container snippet and provides ability to add your personal container ID (GTM-XXXXXXX)') . '</p>';
       $output .= '<h3>' . t('Uses') . '</h3>';
-      $output .= '<p>' . t('After enabling module head over to the <a href=":url">configuration</a> page to add your tag ID.', [':url' => Url::fromRoute('google_tagger.settings')->toString()]) . '</p>';
+      $output .= '<p>' . t('After enabling module head over to the <a href=":url">configuration</a> page to add your container tag ID.', [':url' => Url::fromRoute('google_tagger.settings')->toString()]) . '</p>';
 
       return $output;
   }

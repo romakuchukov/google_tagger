@@ -1,6 +1,6 @@
 name: Google Tagger
 type: module
-description: Allows injection of Google&#039;s Tags
+description: 'Allows injection of Google&#039;s Tags'
 package: Custom
 configure: google_tagger.settings
 core: 8.x
