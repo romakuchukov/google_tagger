@@ -3,13 +3,13 @@
 namespace Drupal\google_tagger\Form;
 
 use Drupal\Core\Url;
-use Drupal\Core\Form\ConfigFormBase;
+use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides a Google TAG form.
  */
-class GoogleTaggerForm extends ConfigFormBase {
+class GoogleTaggerForm extends FormBase {
 
   /**
    * Config settings.
@@ -39,7 +39,7 @@ class GoogleTaggerForm extends ConfigFormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
 
     $config = $this->config(static::SETTINGS);
-
+    // sanitizing.
     $form['tagger-id'] = [
       '#type' => 'textfield',
       '#maxlength' => 12,
@@ -51,7 +51,17 @@ class GoogleTaggerForm extends ConfigFormBase {
       '#required' => TRUE,
     ];
 
-    return parent::buildForm($form, $form_state);
+    $form['actions']['#type'] = 'actions';
+    $form['actions']['submit'] = [
+      '#type' => 'submit',
+      '#value' => $this->t('Save configuration'),
+      '#button_type' => 'primary',
+    ];
+
+    // By default, render the form using system-config-form.html.twig.
+    $form['#theme'] = 'system_config_form';
+
+    return $form;
   }
 
   /**
@@ -81,7 +91,6 @@ class GoogleTaggerForm extends ConfigFormBase {
     $this->messenger()->addStatus($this->t('Check your Google Tag administration page to make sure you are connected.'));
     $form_state->setRedirectUrl(Url::fromRoute('google_tagger.settings'));
 
-    parent::submitForm($form, $form_state);
   }
 
 }
